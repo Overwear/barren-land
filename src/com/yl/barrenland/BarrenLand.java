@@ -8,10 +8,12 @@ public class BarrenLand {
     List<int[]> barrenLandCoordinates = new ArrayList<int[]>();
     Queue<int[]> queue = new LinkedList<>();
     Map<Integer, Integer> areaMap = new HashMap<>();
-    int[][] grid = new int[X_LIMIT][Y_LIMIT];
+    int[][] grid;
 
     public BarrenLand() {
         // constructor
+        grid = new int[X_LIMIT][Y_LIMIT];
+        initGrid();
     }
 
     // read input
@@ -22,6 +24,8 @@ public class BarrenLand {
             s = s.replaceAll("\\{", "");
             s = s.replaceAll("\\}", "");
             s = s.replaceAll("^ ", "");
+            s = s.replaceAll("“", "");
+            s = s.replaceAll("”", "");
 
             String[] coordinates = s.split(" ");
             int x1 = Integer.parseInt(coordinates[0]);
@@ -54,15 +58,13 @@ public class BarrenLand {
             int x2 = coordinates[2];
             int y2 = coordinates[3];
 
-            for (int i = x1; i < x2; i++) {
-                for (int j = y1; j < y2; j++) {
+            for (int i = x1; i <= x2; i++) {
+                for (int j = y1; j <= y2; j++) {
                     grid[i][j] = 1;     // 1 means barren land
                 }
             }
         }
     }
-
-    // create ds that stores disconnected areas
 
     // function that counts the disconnected areas
     void countFertileLand() {
@@ -110,7 +112,12 @@ public class BarrenLand {
         }
     }
 
-    // Print Fertile Land Area and Sort
-
-
+    // Print Sorted Fertile Land Area
+    void printFertileLand() {
+        List<Integer> values = new ArrayList<Integer>(areaMap.values());
+        Collections.sort(values);
+        for (int area : values) {
+            System.out.print(area + " ");
+        }
+    }
 }
