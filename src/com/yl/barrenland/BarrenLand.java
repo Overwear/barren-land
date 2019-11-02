@@ -73,7 +73,7 @@ public class BarrenLand {
         for (int i = 0; i < X_LIMIT; i++) {
             for (int j = 0; j < Y_LIMIT; j++) {
                 if (grid[i][j] == 0) {
-                    counter = 1;
+                    counter = 0;
                     queue.add(new int[]{i, j});
                     landNumber++;
                 } else {
