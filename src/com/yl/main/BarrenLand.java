@@ -29,7 +29,10 @@ public class BarrenLand {
         initGrid();
     }
 
-    // read input
+    /**
+     * Parses the input string into lower left corner coordinate and upper right corner coordinate
+     * and adds each area into an array list.
+     */
     public void parseInput() {
         String[] subStrings = inputCoordinates.split(",");
         for (String s : subStrings) {
@@ -60,6 +63,15 @@ public class BarrenLand {
         }
     }
 
+    /**
+     * Checks if the coordinates are within the 400x600 grid
+     *
+     * @param x1 lower left x coordinate value
+     * @param x2 upper right x coordinate value
+     * @param y1 lower left y coordinate value
+     * @param y2 upper right y coordinate value
+     *
+     */
     public void checkBoundaries(int x1, int y1, int x2, int y2) {
         if (x1 < 0 || x1 > X_LIMIT - 1) {
             throw new IllegalArgumentException();
@@ -75,6 +87,9 @@ public class BarrenLand {
         }
     }
 
+    /**
+     * Reads the input until it's valid
+     */
     public void readInput() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
@@ -86,15 +101,18 @@ public class BarrenLand {
             }
         }
     }
-
-    // initialize grid to 0
+    /**
+     * Initialize grid to all unvisited land
+     */
     private void initGrid() {
         for (int[] row : grid) {
             Arrays.fill(row, UNVISITED_LAND);
         }
     }
 
-    // fill in barren land function
+    /**
+     * Fill in barren rectangle areas
+     */
     public void fillBarrenLand() {
         for (int[] coordinates : barrenLandCoordinates) {
             int x1 = coordinates[0];
@@ -110,7 +128,9 @@ public class BarrenLand {
         }
     }
 
-    // function that counts the disconnected areas
+    /**
+     * Breadth First Search Algorithm to count the areas of all disconnected fertile land
+     */
     public void countFertileLand() {
         int landNumber = 1;     // 2 represents the first fertile land
         int counter;
@@ -158,7 +178,9 @@ public class BarrenLand {
         }
     }
 
-    // Print Sorted Fertile Land Area
+    /**
+     * Print Fertile Land In Ascending Order
+     */
     public void printFertileLand() {
         List<Integer> values = new ArrayList<Integer>(areaMap.values());
         Collections.sort(values);
