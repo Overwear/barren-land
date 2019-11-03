@@ -1,5 +1,13 @@
 package com.yl.main;
 
+/**
+ * BFS Implementation of Finding Disconnected Fertile Land
+ *
+ * @author Yee Lee
+ * @date 11/2/2019
+ *
+ */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
