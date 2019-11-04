@@ -2,7 +2,8 @@ package com.yl.main;
 
 /**
  * BFS Implementation of Finding Disconnected Fertile Land
- *
+ * Inputs: Stdin of coordinates formatted: "{X1 Y1 X2 Y2, X3 Y3 X4 Y4, ...}"
+ * Outputs: Prints disconnected areas in ascending order
  * @author Yee Lee
  * @date 11/2/2019
  *
@@ -130,6 +131,9 @@ public class BarrenLand {
 
     /**
      * Breadth First Search Algorithm to count the areas of all disconnected fertile land
+     * grid area filled in with data 0 => unvisited land
+     * grid area filled in with data 1 => barren land
+     * grid area filled in with data X where X > 2 => fertile land
      */
     public void countFertileLand() {
         int landNumber = 1;     // 2 represents the first fertile land
